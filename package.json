@@ -1,0 +1,46 @@
+{
+  "name": "compare-data",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "lint": "eslint ./src -c .eslintrc.json --ext ts,tsx --no-error-on-unmatched-pattern",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rebaseteams/compare-data.git"
+  },
+  "author": "sarit-rebase",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rebaseteams/compare-data/issues"
+  },
+  "homepage": "https://github.com/rebaseteams/compare-data#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.2",
+    "@storybook/addon-actions": "^6.4.19",
+    "@storybook/addon-essentials": "^6.4.19",
+    "@storybook/addon-interactions": "^6.4.19",
+    "@storybook/addon-links": "^6.4.19",
+    "@storybook/react": "^6.4.19",
+    "@storybook/testing-library": "^0.0.9",
+    "@types/node": "^17.0.17",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
+    "babel-loader": "^8.2.3",
+    "eslint": "^8.9.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-storybook": "^0.5.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "typescript": "^4.5.5"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
