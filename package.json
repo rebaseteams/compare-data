@@ -2,11 +2,11 @@
   "name": "compare-data",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "lint": "eslint ./src -c .eslintrc.json --ext ts,tsx --no-error-on-unmatched-pattern",
+    "lint": "eslint ./src -c .eslintrc.js --ext ts,tsx --no-error-on-unmatched-pattern",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
