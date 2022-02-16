@@ -9,6 +9,18 @@ export const metadata = [
                 name: 'Age',
                 mapperFunctionName: 'DemographicsStackAgeGetter',
             },
+            {
+                type: 'stackbar',
+                combined: true,
+                name: 'Gender',
+                mapperFunctionName: 'DemographicsStackGenderGetter',
+            },
+            {
+                type: 'stackbar',
+                combined: true,
+                name: 'Income',
+                mapperFunctionName: 'DemographicsStackIncomeGetter',
+            }
         ]
     },
 ];

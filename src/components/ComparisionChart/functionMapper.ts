@@ -44,6 +44,8 @@ const mapper = {
 // ---Functions for data mapping of Demographic data---
 // Stack Bar Chart Mapper starts
 export const DemographicsStackAgeGetter = (chartObj: chartObj, data: any) => demographicsStackGetter(data, chartObj, 'age');
+export const DemographicsStackGenderGetter = (chartObj: chartObj, data: any) => demographicsStackGetter(data, chartObj, 'gender');
+export const DemographicsStackIncomeGetter = (chartObj: chartObj, data: any) => demographicsStackGetter(data, chartObj, 'income');
 
 function demographicsStackGetter(data: any, chartObj: chartObj, prop: string) {
   const result: StackBarChartData = {
