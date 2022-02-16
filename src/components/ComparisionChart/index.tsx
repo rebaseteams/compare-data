@@ -64,6 +64,15 @@ function selectChart(chartData: any, chartObj: any, chartIndex: number, chartKey
                 layout="vertical"
                 aspect={aspect}
                 />
+        case 'line':
+            return (
+                <ChartComponent
+                key={chartIndex + chartKey}
+                data={chartData}
+                type="line"
+                XLables={[chartObj.name]}
+                />
+            );
 
     }
     return <div>No Data</div>

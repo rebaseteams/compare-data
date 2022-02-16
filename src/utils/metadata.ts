@@ -23,4 +23,29 @@ export const metadata = [
             }
         ]
     },
+    {
+        name: 'Followers Growth',
+        description: 'To show the followers growth trend for the artist on different platform', // TODO
+        data: [
+            {
+                type: 'line',
+                combined: true,
+                name: 'Spotify',
+                mapperFunctionName: 'FollowersSpotifyGetter',
+            },
+            {
+                type: 'line',
+                combined: true,
+                name: 'Twitter',
+                mapperFunctionName: 'FollowersTwitterGetter',
+            },
+            {
+                type: 'line',
+                combined: true,
+                name: 'Youtube',
+                mapperFunctionName: 'FollowersYoutubeGetter',
+            },
+        ]
+
+    },
 ];

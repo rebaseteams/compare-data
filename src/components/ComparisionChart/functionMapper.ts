@@ -47,6 +47,12 @@ export const DemographicsStackAgeGetter = (chartObj: chartObj, data: any) => dem
 export const DemographicsStackGenderGetter = (chartObj: chartObj, data: any) => demographicsStackGetter(data, chartObj, 'gender');
 export const DemographicsStackIncomeGetter = (chartObj: chartObj, data: any) => demographicsStackGetter(data, chartObj, 'income');
 
+// Functions for data mapping of follower growth
+// Line chart Mapper starts
+export const FollowersSpotifyGetter = (chartObj: chartObj, data: any) => followesGetter(data, chartObj, 'spotify');
+export const FollowersTwitterGetter = (chartObj: chartObj, data: any) => followesGetter(data, chartObj, 'twitter');
+export const FollowersYoutubeGetter = (chartObj: chartObj, data: any) => followesGetter(data, chartObj, 'youtube');
+
 function demographicsStackGetter(data: any, chartObj: chartObj, prop: string) {
   const result: StackBarChartData = {
     xAxisData: [],
@@ -97,3 +103,36 @@ function demographicsStackGetter(data: any, chartObj: chartObj, prop: string) {
 
 // Stack bar chart mapper ends
 
+function followesGetter(data: any, chartObj: chartObj, socialMedia: string) {
+  const result:{
+    xAxisData: Array<any>;
+    yAxisData: Array<any>;
+  } = {
+    xAxisData: [],
+    yAxisData: [],
+  };
+
+  data.forEach((artist) => {
+    _.map(artist.total_followers[socialMedia], (obj: any) => {
+      if (!result.xAxisData.includes(obj.date)) {
+        result.xAxisData.push(obj.date);
+      }
+
+      if (!result.yAxisData.find((obj) => obj.name === artist.name)) {
+        result.yAxisData.push({ name: artist.name, data: [] });
+      }
+
+      const objToUpdate = result.yAxisData.find(
+        (obj) => obj.name === artist.name,
+      );
+      objToUpdate.data.push({
+        xAxis: obj.date,
+        yAxis: obj.value,
+      });
+    });
+
+    result.xAxisData.sort();
+  });
+
+  return [{ data: result, width: 8, aspect: 1.5 }];
+}
