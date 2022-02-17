@@ -2,7 +2,6 @@
 import React from 'react';
 import _ from 'lodash';
 // UTILS
-import * as functionMapper from './functionMapper';
 
 // COMPONENTS
 import ChartComponent from '../Chart/chart';
@@ -13,7 +12,7 @@ import { section } from '../../types/section';
 import { CompareDataProps } from '../../types/props';
 
 
-const ComparisionChartComponent = ({metaData, data}: CompareDataProps) => {
+const ComparisionChartComponent = ({functionMapper, metaData, data}: CompareDataProps) => {
     
     return (<div>
         {
@@ -26,7 +25,7 @@ const ComparisionChartComponent = ({metaData, data}: CompareDataProps) => {
                 <div className='chart-section'>
                     <Row style={{width: '100%'}} gutter={10}>
                     {
-                        section.data.map((chartObj: chartObj, chartIndex: number) => render(data, chartObj, chartIndex))
+                        section.data.map((chartObj: chartObj, chartIndex: number) => render(functionMapper, data, chartObj, chartIndex))
                     }
                     </Row>       
                 </div>
@@ -38,7 +37,7 @@ const ComparisionChartComponent = ({metaData, data}: CompareDataProps) => {
 
 };
 
-function render(data: any, chartObj: chartObj, chartIndex: number) {
+function render(functionMapper: any, data: any, chartObj: chartObj, chartIndex: number) {
     if (functionMapper[chartObj.mapperFunctionName]) {
         const chartsData: any = functionMapper[chartObj.mapperFunctionName](chartObj, data);
         return _.map(chartsData, (chartData, chartKey) => (
