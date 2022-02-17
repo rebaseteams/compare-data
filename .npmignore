@@ -1,8 +1,10 @@
 .github
+.storybook
 node_modules
 src
 .eslintignore
-.eslintrc.json
+.eslintrc.js
 .gitignore
 package-lock.json
 tsconfig.json
+testData
