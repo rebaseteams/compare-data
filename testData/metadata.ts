@@ -36,4 +36,16 @@ export const metadata = [
             }
         ]
     },
+    {
+        name: 'Personality traits', //TODO: Get proper heading and description
+        description: 'This information is about Personality Traits', // TODO
+        data: [
+            {
+                type: 'radar',
+                combined: false,
+                name: 'Personality traits radar chart',
+                mapperFunctionName: 'RadialPersonalityTraitsGetter',
+            }
+        ]
+    },
 ];

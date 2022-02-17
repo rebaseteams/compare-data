@@ -10,6 +10,7 @@ import { Col, Row } from 'antd';
 import { chartObj } from '../../types/chartObj';
 import { section } from '../../types/section';
 import { CompareDataProps } from '../../types/props';
+import RadarChart from '../Chart/radar';
 
 
 const ComparisionChartComponent = ({functionMapper, metaData, data}: CompareDataProps) => {
@@ -78,6 +79,11 @@ function selectChart(chartData: any, chartObj: any, chartIndex: number, chartKey
                 type={"pie"}
                 XLables={[chartData.headerName]}
             />
+        case 'radar':
+            return <RadarChart key={chartIndex+chartKey} 
+                altColor={chartData.altColor} 
+                data={chartData.data} 
+                headerName={chartData.headerName}/>
     }
     return <div>No Data</div>
 }

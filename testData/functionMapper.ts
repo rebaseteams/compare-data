@@ -22,6 +22,15 @@ export interface StackBarInterface {
   chartheading?: string | Array<string>;
 }
 
+const colorCodes = [
+  'rgb(52,133,147,0.7)',
+  'rgb(131,68,140,0.7)',
+  'rgb(138,138,80,0.7)',
+  'rgb(79,255,194,0.7)',
+  'rgb(84,238,255,0.7)',
+  'rgb(251,184,35,0.7)',
+];
+
 const mapper = {
   a18_29: '18-29',
   a30_44: '30-44',
@@ -46,6 +55,7 @@ const mapper = {
 export const DemographicsStackAgeGetter = (chartObj: chartObj, data: any) => demographicsStackGetter(data, chartObj, 'age');
 export const FollowersSpotifyGetter = (chartObj: chartObj, data: any) => followesGetter(data, chartObj, 'spotify');
 export const EducationGetter = (chartObj: chartObj, data: any) => educationPersonalityGetter(data, chartObj, 'education');
+export const RadialPersonalityTraitsGetter = (chartObj: chartObj, data: any) => radialEducationPersonalityGetter(data, chartObj, 'personality_traits');
 
 
 function demographicsStackGetter(data: any, chartObj: chartObj, prop: string) {
@@ -152,3 +162,23 @@ function educationPersonalityGetter(data: any, chartObj: chartObj, prop: string)
 
   return artistTraitCharts;
 }
+
+function radialEducationPersonalityGetter(data: any, chartObj: chartObj, prop: string) {
+  const artistTraitCharts = data.map((artist, index) => {
+    const finalResult = {
+      data: {
+        headerName: artist.name,
+        data: _.map(artist.demographics[prop], (value, key: string) => {
+          const label = key.charAt(0).toUpperCase() + key.slice(1);
+          return { name: label, value: Number(value) };
+        }),
+        altColor: colorCodes[index],
+      },
+      width: data.length > 1 ? Number(24 / data.length) : 12,
+      offset: data.length > 1 ? 0 : 6,
+    };
+    return finalResult;
+  });
+  return artistTraitCharts;
+}
+

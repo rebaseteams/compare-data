@@ -1,6 +1,6 @@
 {
   "name": "@rebaseitlabs/compare-data",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
