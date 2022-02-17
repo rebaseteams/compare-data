@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
+import Line from './lineChart';
 
 import StackBar from './stackbar';
 
@@ -42,8 +43,20 @@ const ChartComponent = ({
     switch (type) {
         
         case 'stackbar':
-            return <StackBar data={data} chartheading={XLables[0]} layout={layout} background="#FFF" aspect={aspect} forground={forground}/>;
-
+            return <StackBar
+            data={data} 
+            chartheading={XLables[0]} 
+            layout={layout} 
+            background="#FFF" 
+            aspect={aspect} 
+            forground={forground}/>;
+        case 'line':
+            return <Line 
+                data={data} 
+                xLables={XLables} 
+                forground={forground} 
+                aspect={aspect}
+            />
         default:
             return <></>;
     }
