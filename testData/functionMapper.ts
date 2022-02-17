@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import _ from 'lodash';
-import { chartObj } from '../../types/chartObj';
+import { chartObj } from '../src/types/chartObj';
 
 interface StackBarChartData {
   xAxisData: Array<string>;

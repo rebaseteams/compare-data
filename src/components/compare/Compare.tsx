@@ -4,11 +4,11 @@ import { CompareDataProps } from '../../types/props';
 
 import ComparisionChartComponent from '../ComparisionChart'
 
-export const CompareData=({metaData, data}: CompareDataProps)=>{
+export const CompareData=({functionMapper, metaData, data}: CompareDataProps)=>{
 
     return (
         <div>
-            <ComparisionChartComponent metaData={metaData} data={data} />
+            <ComparisionChartComponent functionMapper={functionMapper} metaData={metaData} data={data} />
         </div>
     )
 }
