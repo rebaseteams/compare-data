@@ -1,1 +1,1 @@
-export * from "./"
+export { CompareData} from './Compare'
