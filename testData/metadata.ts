@@ -24,4 +24,16 @@ export const metadata = [
         ]
 
     },
+    {
+        name: 'Education', //TODO: Get proper heading and description
+        description: 'This information is about Education', // TODO
+        data: [
+            {
+                type: 'pie',
+                combined: false,
+                name: 'Education',
+                mapperFunctionName: 'EducationGetter',
+            }
+        ]
+    },
 ];

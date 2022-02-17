@@ -2,8 +2,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import Line from './lineChart';
-
+import PieChart from './pie';
 import StackBar from './stackbar';
+
+import { colorPallets } from '../constants';
 
 interface ChartComponentModel {
     type: string;
@@ -37,7 +39,9 @@ const ChartComponent = ({
     XLables = [],
     layout = 'horizontal',
     aspect = 2,
-    forground
+    forground,
+    classes = '',
+    colors = colorPallets
 }: ChartComponentModel) => {
 
     switch (type) {
@@ -57,6 +61,13 @@ const ChartComponent = ({
                 forground={forground} 
                 aspect={aspect}
             />
+        case 'pie':
+            return <PieChart
+                classes={classes} 
+                data={data} 
+                colors={colors} 
+                type={type} 
+                XLables={XLables} />;
         default:
             return <></>;
     }

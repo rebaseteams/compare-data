@@ -45,6 +45,8 @@ const mapper = {
 // Stack Bar Chart Mapper starts
 export const DemographicsStackAgeGetter = (chartObj: chartObj, data: any) => demographicsStackGetter(data, chartObj, 'age');
 export const FollowersSpotifyGetter = (chartObj: chartObj, data: any) => followesGetter(data, chartObj, 'spotify');
+export const EducationGetter = (chartObj: chartObj, data: any) => educationPersonalityGetter(data, chartObj, 'education');
+
 
 function demographicsStackGetter(data: any, chartObj: chartObj, prop: string) {
   const result: StackBarChartData = {
@@ -129,3 +131,24 @@ function followesGetter(data: any, chartObj: chartObj, socialMedia: string) {
 
   return [{ data: result, width: 8, aspect: 1.5 }];
 } 
+
+function educationPersonalityGetter(data: any, chartObj: chartObj, prop: string) {
+  const artistTraitCharts = data.map((artist) => {
+    const finalResult = {
+      data: {
+        headerName: artist.name,
+        name: chartObj.name,
+        data: _.map(artist.demographics[prop], (value, key) => {
+          const label = mapper[key] || key;
+          return { label, value: Number(value) };
+        }),
+      },
+      width: data.length > 1 ? Number(24 / data.length) : 12,
+      offset: data.length > 1 ? 0 : 6,
+      aspect: 1.5,
+    };
+    return finalResult;
+  });
+
+  return artistTraitCharts;
+}

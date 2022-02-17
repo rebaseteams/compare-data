@@ -72,6 +72,12 @@ function selectChart(chartData: any, chartObj: any, chartIndex: number, chartKey
                 XLables={[chartObj.name]}
                 />
             );
+        case 'pie':
+            return <ChartComponent key={chartIndex+chartKey}
+                data={chartData.data}
+                type={"pie"}
+                XLables={[chartData.headerName]}
+            />
     }
     return <div>No Data</div>
 }

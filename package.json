@@ -1,6 +1,6 @@
 {
   "name": "@rebaseitlabs/compare-data",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -50,6 +50,7 @@
     "@ant-design/charts": "^1.3.5",
     "antd": "^4.18.7",
     "lodash": "^4.17.21",
+    "react-apexcharts": "^1.3.9",
     "recharts": "^2.1.9"
   }
 }
