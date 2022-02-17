@@ -44,6 +44,7 @@ const mapper = {
 // ---Functions for data mapping of Demographic data---
 // Stack Bar Chart Mapper starts
 export const DemographicsStackAgeGetter = (chartObj: chartObj, data: any) => demographicsStackGetter(data, chartObj, 'age');
+export const FollowersSpotifyGetter = (chartObj: chartObj, data: any) => followesGetter(data, chartObj, 'spotify');
 
 function demographicsStackGetter(data: any, chartObj: chartObj, prop: string) {
   const result: StackBarChartData = {
@@ -95,3 +96,36 @@ function demographicsStackGetter(data: any, chartObj: chartObj, prop: string) {
 
 // Stack bar chart mapper ends
 
+function followesGetter(data: any, chartObj: chartObj, socialMedia: string) {
+  const result:{
+    xAxisData: Array<any>;
+    yAxisData: Array<any>;
+  } = {
+    xAxisData: [],
+    yAxisData: [],
+  };
+
+  data.forEach((artist) => {
+    _.map(artist.total_followers[socialMedia], (obj: any) => {
+      if (!result.xAxisData.includes(obj.date)) {
+        result.xAxisData.push(obj.date);
+      }
+
+      if (!result.yAxisData.find((obj) => obj.name === artist.name)) {
+        result.yAxisData.push({ name: artist.name, data: [] });
+      }
+
+      const objToUpdate = result.yAxisData.find(
+        (obj) => obj.name === artist.name,
+      );
+      objToUpdate.data.push({
+        xAxis: obj.date,
+        yAxis: obj.value,
+      });
+    });
+
+    result.xAxisData.sort();
+  });
+
+  return [{ data: result, width: 8, aspect: 1.5 }];
+} 
