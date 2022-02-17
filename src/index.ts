@@ -1,1 +1,1 @@
-export * from "./components/compare"
+export { CompareData} from './components/compare'
